@@ -2,7 +2,18 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import HeroIllustration from '../components/HeroIllustration.astro';
+import Icon from '../components/Icon.astro';
+import {
+	COMPANY_NAME,
+	TAGLINE,
+	PRODUCT_NAME,
+	CONTACT_EMAIL,
+	SITE_TITLE,
+	SITE_DESCRIPTION,
+} from '../consts';
+
+const emailLink = `mailto:${CONTACT_EMAIL}`;
 ---
 
 <!doctype html>
@@ -11,39 +22,129 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<main id="main-content">
+			<section id="home" class="section section--lead">
+				<div class="container hero">
+					<div class="hero-copy">
+						<h1>Software and services for property investors</h1>
+						<p>
+							We develop practical digital tools to help property investors organise
+							portfolio information, explore future scenarios and see the bigger picture.
+						</p>
+						<p class="small">
+							Our focus is on making complex property information clearer, more accessible
+							and easier to understand.
+						</p>
+						<p style="margin-top:1rem">
+							<a class="btn btn-primary" href="#property-spectrum">Explore Property Spectrum</a>
+							<a class="btn btn-ghost" href="#contact" style="margin-left:0.5rem">Contact Us</a>
+						</p>
+					</div>
+					<HeroIllustration />
+				</div>
+			</section>
+
+			<section id="about" class="section">
+				<div class="container">
+					<h2>Practical technology. Clearer property insights.</h2>
+					<p>
+						{COMPANY_NAME} focuses on software and digital solutions for property investors.
+						We aim to simplify the way investors organise information and understand their
+						portfolios through thoughtfully designed, easy-to-use tools.
+					</p>
+					<p>
+						We are developing {PRODUCT_NAME} to bring property details, loan information and
+						long-term projections together in a clear and accessible experience.
+					</p>
+				</div>
+			</section>
+
+			<section id="property-spectrum" class="section">
+				<div class="container">
+					<div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+						<h2 style="margin:0">{PRODUCT_NAME}</h2>
+						<span class="badge">In development</span>
+					</div>
+					<p class="small">See the bigger picture of your property portfolio.</p>
+					<p>
+						{PRODUCT_NAME} is a property portfolio application currently in development. It is
+						being designed to help investors organise property and loan information, review
+						portfolio snapshots and explore how property values and rental income could change
+						over time.
+					</p>
+
+					<h3>Planned capabilities include:</h3>
+					<div class="card-grid" style="margin-top:1rem">
+						<div class="card">
+							<h4><Icon name="portfolio" />Portfolio overview</h4>
+							<p>Bring key information about your properties together in one organised view.</p>
+						</div>
+						<div class="card">
+							<h4><Icon name="loan" />Property and loan details</h4>
+							<p>Keep track of property records and associated loan information.</p>
+						</div>
+						<div class="card">
+							<h4><Icon name="projection" />Value and rental projections</h4>
+							<p>Explore potential changes in property values and rental income using adjustable assumptions.</p>
+						</div>
+						<div class="card">
+							<h4><Icon name="snapshot" />Portfolio snapshots</h4>
+							<p>Review summaries designed to make portfolio information easier to understand.</p>
+						</div>
+						<div class="card">
+							<h4><Icon name="ownership" />Multiple ownership structures</h4>
+							<p>Organise properties across individual and entity ownership arrangements.</p>
+						</div>
+						<div class="card">
+							<h4><Icon name="layout" />Clear, accessible layouts</h4>
+							<p>View portfolio information through layouts designed for different screen sizes.</p>
+						</div>
+					</div>
+
+					<p class="small" style="margin-top:1rem">
+						{PRODUCT_NAME} is under development. Features and availability may change before release.
+					</p>
+					<p class="disclaimer">
+						Projections are illustrative only and depend on user-entered assumptions. They are
+						not predictions or guarantees. The information provided is general in nature and is
+						not financial, investment, tax or legal advice.
+					</p>
+					<p style="margin-top:1rem">
+						<a class="btn btn-primary" href={`mailto:${CONTACT_EMAIL}?subject=Property%20Spectrum%20Enquiry`}>Product enquiries</a>
+					</p>
+				</div>
+			</section>
+
+			<section id="focus" class="section">
+				<div class="container">
+					<h2>Built around clarity and practicality</h2>
+					<div class="card-grid" style="margin-top:1rem">
+						<div class="card">
+							<h4>Clear information</h4>
+							<p>Present property information in an organised, understandable format.</p>
+						</div>
+						<div class="card">
+							<h4>Practical tools</h4>
+							<p>Focus on features that help investors manage information and explore scenarios.</p>
+						</div>
+						<div class="card">
+							<h4>Thoughtful design</h4>
+							<p>Create straightforward experiences without unnecessary complexity.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="contact" class="section">
+				<div class="container">
+					<h2>Get in touch</h2>
+					<p>For company enquiries, questions about {PRODUCT_NAME} or feedback, please contact us by email.</p>
+					<p><a href={emailLink}>{CONTACT_EMAIL}</a></p>
+					<p class="small">We welcome product enquiries and feedback from property investors.</p>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
